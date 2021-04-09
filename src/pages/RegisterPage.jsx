@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Redirect} from 'react-router-dom';
 
 import firebaseApp from '../firebase/firebaseConfig';
+import AuthContext from './../auth/AuthContext';
 
 import FormInput from './../components/forms/FormInput';
 import Button from './../components/buttons/Button';
@@ -23,6 +24,7 @@ const RegisterPageStyles = styled.aside`
 `
 
 const RegisterPage = (props) => {
+    const auth = useContext(AuthContext)
     const [username, setName]=useState('')
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
@@ -32,6 +34,7 @@ const RegisterPage = (props) => {
         firebaseApp.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Redirect to login route
+            auth.isUser = true
             setIsValid(true)
         })
             .catch((error) => {
