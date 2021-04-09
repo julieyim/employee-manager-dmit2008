@@ -9,13 +9,12 @@ import RegisterPage from './pages/RegisterPage';
 import PageNotFound from './pages/404';
 import DashBoard from './pages/dashboard/DashBoard';
 import AppBar from './components/appbar/AppBar';
-import AuthContext from 'auth/AuthContext';
 
 function App() {
  
   return (
     <>
-    <AuthContext.Provider>
+    <AuthProvider>
     <Router>
       <AppBar/>
       <Switch>
@@ -26,7 +25,7 @@ function App() {
         <Route path="*"><PageNotFound/></Route>
       </Switch>
     </Router>
-    </AuthContext.Provider>
+    </AuthProvider>
     </>
   );
 }

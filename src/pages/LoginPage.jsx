@@ -31,10 +31,6 @@ const LoginPage = (props) => {
         firebaseApp.auth().signInWithEmailAndPassword(email, password)
         .then(userCredential=>{
             // email and password input
-            // console.log(userCredential.user.email)
-            // console.log(userCredential.user.uid)
-            // console.log(userCredential.user.displayName)
-            // console.log(userCredential.user.emailVerified)
             auth.isUser = true
             setIsValid(true)
         })
@@ -46,7 +42,7 @@ const LoginPage = (props) => {
 
     // conditional rendering
     if(isValid){
-        <Redirect to="/dashboard"/>
+        return <Redirect to="/dashboard"/>
     }else{
         return ( 
             <LoginPageStyles>
