@@ -28,14 +28,13 @@ const RegisterPage = (props) => {
     const [username, setName]=useState('')
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
-    const [isValid, setIsValid]=useState(false)
+    const [hasFinished, setHasFinished]=useState(false)
 
     const handleClick = (e) =>{
         firebaseApp.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Redirect to login route
-            auth.isUser = true
-            setIsValid(true)
+            setHasFinished(true)
         })
             .catch((error) => {
             // Catch errors
@@ -44,7 +43,7 @@ const RegisterPage = (props) => {
         });
     }
     
-    if(isValid){
+    if(hasFinished){
         return <Redirect to="/login"/>
     }else{
         return ( 

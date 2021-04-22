@@ -1,0 +1,9 @@
+const ViewAllPanel = (props) => {
+    return ( 
+        <header>
+            <h2>Edit Panel</h2>
+        </header>
+     );
+}
+ 
+export default ViewAllPanel;
